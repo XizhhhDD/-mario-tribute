@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a2e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow: hidden;
+}
+
+#game-container {
+    position: relative;
+    width: 800px;
+    height: 600px;
+    background: #5c94fc;
+    border: 4px solid #2d2d44;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+#gameCanvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+#ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#hud {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    display: flex;
+    justify-content: space-around;
+    pointer-events: none;
+}
+
+.hud-item {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    gap: 8px;
+}
+
+#hud #lives {
+    color: #ff6b6b;
+}
+
+#hud #coins {
+    color: #ffd93d;
+}
+
+#start-screen,
+#game-over-screen,
+#level-complete-screen,
+#game-complete-screen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    pointer-events: auto;
+}
+
+.hidden {
+    display: none !important;
+}
+
+#start-screen h1,
+#game-over-screen h1,
+#level-complete-screen h1,
+#game-complete-screen h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 0 #4a4a6a;
+}
+
+#start-screen p {
+    font-size: 18px;
+    margin: 10px 0;
+    color: #aaa;
+}
+
+button {
+    background: linear-gradient(180deg, #5cb85c, #449d44);
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    font-size: 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.2s;
+    font-weight: bold;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 0 #2d6e2d;
+}
+
+button:hover {
+    background: linear-gradient(180deg, #6dc96d, #4da84d);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 0 #2d6e2d;
+}
+
+button:active {
+    transform: translateY(2px);
+    box-shadow: 0 2px 0 #2d6e2d;
+}
+
+#restart-button {
+    background: linear-gradient(180deg, #d9534f, #c9302c);
+    box-shadow: 0 4px 0 #9c2824;
+}
+
+#restart-button:hover {
+    background: linear-gradient(180deg, #f56b66, #d9443c);
+    box-shadow: 0 6px 0 #9c2824;
+}
+
+#play-again-button {
+    background: linear-gradient(180deg, #f0ad4e, #ec971f);
+    box-shadow: 0 4px 0 #b07e15;
+}
+
+#play-again-button:hover {
+    background: linear-gradient(180deg, #f2be6b, #f0a73a);
+    box-shadow: 0 6px 0 #b07e15;
+}

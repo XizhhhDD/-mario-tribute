@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>马里奥致敬游戏</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="game-container">
+        <canvas id="gameCanvas"></canvas>
+        <div id="ui-layer">
+            <div id="hud">
+                <div class="hud-item">
+                    <span>生命:</span>
+                    <span id="lives">3</span>
+                </div>
+                <div class="hud-item">
+                    <span>金币:</span>
+                    <span id="coins">0</span>
+                </div>
+                <div class="hud-item">
+                    <span>关卡:</span>
+                    <span id="level">1</span>
+                </div>
+            </div>
+            <div id="start-screen">
+                <h1>🍄 马里奥致敬游戏 🍄</h1>
+                <p>方向键 / WASD - 移动</p>
+                <p>空格 / W / ↑ - 跳跃</p>
+                <button id="start-button">开始游戏</button>
+            </div>
+            <div id="game-over-screen" class="hidden">
+                <h1>游戏结束</h1>
+                <p>最终得分: <span id="final-score">0</span></p>
+                <button id="restart-button">重新开始</button>
+            </div>
+            <div id="level-complete-screen" class="hidden">
+                <h1>关卡完成!</h1>
+                <button id="next-level-button">下一关</button>
+            </div>
+            <div id="game-complete-screen" class="hidden">
+                <h1>🎉 恭喜通关! 🎉</h1>
+                <p>总得分: <span id="total-score">0</span></p>
+                <button id="play-again-button">再玩一次</button>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="js/main.js"></script>
+</body>
+</html>
