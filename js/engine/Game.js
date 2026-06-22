@@ -1,5 +1,8 @@
 import { Input } from './Input.js';
 import { Renderer } from './Renderer.js';
+import { Level1 } from '../levels/Level1.js';
+import { Level2 } from '../levels/Level2.js';
+import { Level3 } from '../levels/Level3.js';
 
 /**
  * 游戏主引擎 - 管理游戏循环和状态
@@ -57,9 +60,17 @@ export class Game {
     }
 
     async init() {
-        // 动态加载关卡
-        const levelModule = await import(`../levels/Level${this.currentLevelNum}.js`);
-        const LevelClass = levelModule[`Level${this.currentLevelNum}`];
+        console.log('Initializing level', this.currentLevelNum);
+
+        // 使用静态导入的关卡类
+        const levelClasses = [null, Level1, Level2, Level3];
+        const LevelClass = levelClasses[this.currentLevelNum];
+
+        if (!LevelClass) {
+            console.error('Level not found:', this.currentLevelNum);
+            return;
+        }
+
         this.level = new LevelClass();
         this.levelWidth = this.level.width;
 
@@ -67,6 +78,7 @@ export class Game {
         this.entities = this.level.entities;
         this.cameraX = 0;
 
+        console.log('Level initialized:', this.level);
         this.updateHUD();
     }
 
