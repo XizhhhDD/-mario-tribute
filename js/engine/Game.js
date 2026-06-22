@@ -284,7 +284,5 @@ export class Game {
         entity.shouldRemove = true;
     }
 
-    get canvas() {
-        return document.getElementById('gameCanvas');
-    }
+    // 移除 get canvas getter，改用构造函数初始化
 }
