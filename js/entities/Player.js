@@ -75,14 +75,16 @@ export class Player extends Entity {
             }
         }
 
-        // 跳跃
+        // 跳跃 - 只在地面且未跳跃时触发
         if (input.isJumpPressed() && this.isGrounded && !this.isJumping) {
             this.jump();
         }
 
-        // 可变跳跃高度（按住空格跳得更高）
-        if (this.isJumping && !input.isJumpPressed()) {
-            this.vy *= 0.5; // 快速下落
+        // 可变跳跃高度（按住空格跳得更高）- 修复滞空问题
+        if (this.isJumping && this.vy < 0 && !input.isJumpPressed()) {
+            // 释放跳跃键时，减少向上速度（而不是直接减半）
+            this.vy *= 0.5;
+            this.isJumping = false; // 结束跳跃状态
         }
     }
 

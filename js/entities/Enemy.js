@@ -149,28 +149,38 @@ export class Enemy extends Entity {
                 // 正常Goomba
                 const walkFrame = Math.floor(frameCount / 15) % 2;
 
-                // 身体
+                // 身体（棕色蘑菇状）
                 renderer.ctx.fillStyle = '#c84c0c';
-                renderer.ctx.fillRect(screenX, screenY + this.height * 0.3, this.width, this.height * 0.7);
-
-                // 头部
+                // 半圆形身体
                 renderer.ctx.beginPath();
-                renderer.ctx.arc(screenX + this.width / 2, screenY + this.height * 0.35,
-                                this.width / 2, Math.PI, 0);
+                renderer.ctx.arc(screenX + this.width / 2, screenY + this.height * 0.5,
+                                this.width / 2, 0, Math.PI * 2);
                 renderer.ctx.fill();
 
-                // 眼睛
-                renderer.ctx.fillStyle = '#fff';
-                renderer.ctx.fillRect(screenX + this.width * 0.2, screenY + this.height * 0.2,
-                                      this.width * 0.2, this.height * 0.15);
-                renderer.ctx.fillRect(screenX + this.width * 0.6, screenY + this.height * 0.2,
-                                      this.width * 0.2, this.height * 0.15);
+                // 底部平边
+                renderer.ctx.fillRect(screenX + 2, screenY + this.height * 0.5, this.width - 4, this.height * 0.5);
 
+                // 眼睛（白色椭圆）
+                renderer.ctx.fillStyle = '#fff';
+                renderer.ctx.beginPath();
+                renderer.ctx.ellipse(screenX + this.width * 0.35, screenY + this.height * 0.35,
+                                    this.width * 0.18, this.height * 0.12, 0, 0, Math.PI * 2);
+                renderer.ctx.fill();
+                renderer.ctx.beginPath();
+                renderer.ctx.ellipse(screenX + this.width * 0.65, screenY + this.height * 0.35,
+                                    this.width * 0.18, this.height * 0.12, 0, 0, Math.PI * 2);
+                renderer.ctx.fill();
+
+                // 眼睛（黑色瞳孔）
                 renderer.ctx.fillStyle = '#000';
-                renderer.ctx.fillRect(screenX + this.width * 0.25, screenY + this.height * 0.22,
-                                      this.width * 0.08, this.height * 0.1);
-                renderer.ctx.fillRect(screenX + this.width * 0.65, screenY + this.height * 0.22,
-                                      this.width * 0.08, this.height * 0.1);
+                renderer.ctx.beginPath();
+                renderer.ctx.arc(screenX + this.width * 0.35, screenY + this.height * 0.36,
+                                this.width * 0.09, 0, Math.PI * 2);
+                renderer.ctx.fill();
+                renderer.ctx.beginPath();
+                renderer.ctx.arc(screenX + this.width * 0.65, screenY + this.height * 0.36,
+                                this.width * 0.09, 0, Math.PI * 2);
+                renderer.ctx.fill();
 
                 // 脚（动画）
                 renderer.ctx.fillStyle = '#2c3e50';
@@ -185,7 +195,11 @@ export class Enemy extends Entity {
                 // 边框
                 renderer.ctx.strokeStyle = '#8b3209';
                 renderer.ctx.lineWidth = 2;
-                renderer.ctx.strokeRect(screenX, screenY + this.height * 0.3, this.width, this.height * 0.7);
+                renderer.ctx.beginPath();
+                renderer.ctx.arc(screenX + this.width / 2, screenY + this.height * 0.5,
+                                this.width / 2, 0, Math.PI * 2);
+                renderer.ctx.stroke();
+                renderer.ctx.strokeRect(screenX + 2, screenY + this.height * 0.5, this.width - 4, this.height * 0.5);
             }
         }
     }

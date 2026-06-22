@@ -90,6 +90,8 @@ export class Game {
 
         this.state = 'playing';
         this.isRunning = true;
+        this.isPaused = false;  // 重置暂停状态
+        this.frameCount = 0;    // 重置帧计数
         this.lastTime = performance.now();
 
         this.init().then(() => {
@@ -220,8 +222,12 @@ export class Game {
         if (this.lives <= 0) {
             this.showGameOver();
         } else {
-            // 重生
-            this.respawnPlayer();
+            // 暂停游戏，1秒后重生
+            this.isPaused = true;
+            setTimeout(() => {
+                this.respawnPlayer();
+                this.isPaused = false;
+            }, 1000);
         }
 
         this.updateHUD();
@@ -247,6 +253,7 @@ export class Game {
 
         setTimeout(() => {
             document.getElementById('level-complete-screen').classList.remove('hidden');
+            this.updateHUD();
         }, 1000);
     }
 
